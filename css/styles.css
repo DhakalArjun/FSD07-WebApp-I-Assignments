@@ -1,0 +1,29 @@
+body {
+  background-color: beige;
+}
+#AddNewForm {
+  display: flex;
+  flex-direction: column;
+}
+
+.imageTag {
+  width: 3rem;
+  border-radius: 50%;
+  border: 1px solid black;
+}
+.listHeader {
+  font-weight: bolder;
+}
+.displayFlex {
+  display: flex;
+}
+#errorP {
+  color: rgb(229, 84, 84);
+  padding-left: 5px;
+  font-style: italic;
+}
+#successP {
+  color: rgb(24, 216, 95);
+  padding-left: 5px;
+  font-style: italic;
+}

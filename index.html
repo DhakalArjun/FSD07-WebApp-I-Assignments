@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Address Book</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body onload="displayData()">
+    <div class="container">
+      <h1 class="title text-center my-2">Address Book</h1>
+
+      <!-- Button trigger Add New modal -->
+      <button
+        type="button"
+        class="btn btn-primary my-2"
+        data-bs-toggle="modal"
+        data-bs-target="#exampleModal"
+      >
+        Add New
+      </button>
+
+      <!-- Modal -->
+      <div
+        class="modal fade"
+        id="exampleModal"
+        tabindex="-1"
+        aria-labelledby="exampleModalLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Add New</h5>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+                onclick="clearMsg()"
+              ></button>
+            </div>
+            <div class="modal-body">
+              <form id="AddNewForm" action="">
+                <select
+                  name="userType"
+                  id="userType"
+                  class="form-control mb-2"
+                  required
+                >
+                  <option value="Select an option">Select user type</option>
+                  <option value="Teacher">Teacher</option>
+                  <option value="Student">Student</option>
+                </select>
+                <input
+                  class="form-control mb-2"
+                  id="inputFullName"
+                  type="text"
+                  placeholder="Full Name"
+                />
+                <input
+                  class="form-control mb-2"
+                  id="inputAddress"
+                  type="text"
+                  placeholder="Address"
+                />
+                <input
+                  class="form-control mb-2"
+                  id="inputEmail"
+                  type="text"
+                  placeholder="Email"
+                />
+                <!-- <input
+                  class="form-control mb-2" 
+                  id="inputImage"
+                  type="file"
+                  placeholder="Choose image"
+                /> -->
+                <p id="errorP"></p>
+                <p id="successP"></p>
+                <div class="modal-footer">
+                  <button
+                    type="button"
+                    class="btn btn-secondary"
+                    data-bs-dismiss="modal"
+                    onclick="clearMsg()"
+                  >
+                    Close
+                  </button>
+                  <button
+                    type="button"
+                    onclick="addNewUser()"
+                    class="btn btn-primary"
+                  >
+                    Submit
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="searchInput my-2 d-flex justify-content-between">
+        <div class="selectType col-8 d-flex">
+          <p class="col-4">Select User Type</p>
+          <div class="col-4">
+            <input
+              type="radio"
+              id="teacherRadio"
+              onclick="displayData()"
+              name="userType"
+              value="Teacher"
+            />
+            <label for="teacher">Teacher</label><br />
+          </div>
+          <div class="col-4">
+            <input
+              type="radio"
+              id="studentRadio"
+              onclick="displayData()"
+              name="userType"
+              value="Student"
+              checked
+            />
+            <label for="student">Student</label><br />
+          </div>
+        </div>
+
+        <div class="col-4">
+          <input
+            type="text"
+            class="form-control"
+            id="searchInput"
+            onkeyup="myFunc()"
+            placeholder="Search by name.."
+            title="Type in "
+          />
+        </div>
+      </div>
+      <hr />
+
+      <div id="dataList" class="my-2 text-center">
+        <!-- <div class="listHeader d-flex">
+          <p class="fullNameHeader col-4">Full Name</p>
+          <p class="addressHeader col-5">Address</p>
+          <p class="addressHeader col-3">Image</p>
+        </div> -->
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.0.1/firebase-app.js"></script>
+    <script
+      defer
+      src="https://www.gstatic.com/firebasejs/8.0.1/firebase-database.js"
+    ></script>
+    <script
+      defer
+      src="https://www.gstatic.com/firebasejs/8.0.1/firebase-auth.js"
+    ></script>
+  </body>
+</html>
